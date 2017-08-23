@@ -1,0 +1,3 @@
+[submodule "sablony-muni-scraper"]
+	path = sablony-muni-scraper
+	url = git@gitlab.fi.muni.cz:xnovot32/sablony-muni-scraper.git
