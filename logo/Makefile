@@ -17,10 +17,10 @@ find_candidate=\
 	done;
 
 
-ENGLISH_GLOB=$${WORKPLACE}_{logo,znak,pecet}{,-s-dovetkem}-{cb,modra,cmyk,rgb}{-modra,}{_en,}.pdf
-CZECH_GLOB=$${WORKPLACE}_{logo,znak,pecet}{,-s-dovetkem}-{cb,modra,cmyk,rgb}{-modra,}{_cz,}.pdf
-ENGLISH_COLOR_GLOB=$${WORKPLACE}_{logo,znak,pecet}{,-s-dovetkem}-{rgb,cmyk,modra,cb}{-modra,}{_en,}.pdf
-CZECH_COLOR_GLOB=$${WORKPLACE}_{logo,znak,pecet}{,-s-dovetkem}-{rgb,cmyk,modra,cb}{-modra,}{_cz,}.pdf
+ENGLISH_GLOB=$${WORKPLACE}_{pecet,logo,znak}{,-s-dovetkem}-{cb,modra,cmyk,rgb}{-modra,}{_en,}.pdf
+CZECH_GLOB=$${WORKPLACE}_{pecet,logo,znak}{,-s-dovetkem}-{cb,modra,cmyk,rgb}{-modra,}{_cz,}.pdf
+ENGLISH_COLOR_GLOB=$${WORKPLACE}_{pecet,logo,znak}{,-s-dovetkem}-{rgb,cmyk,modra,cb}{-modra,}{_en,}.pdf
+CZECH_COLOR_GLOB=$${WORKPLACE}_{pecet,logo,znak}{,-s-dovetkem}-{rgb,cmyk,modra,cb}{-modra,}{_cz,}.pdf
 
 .PHONY: all clean
 all: $(FILES)
