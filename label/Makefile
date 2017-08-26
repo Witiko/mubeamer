@@ -5,7 +5,8 @@ WORKPLACES=arch ceitec cerit ctt czs econ fi fsps fss iba ics is kariera lang \
 	law med mu muzeu ped phil press ptceitec rect sci skm teiresias ucb uct
 PREFIX=mubeamer
 LANGUAGES=english czech
-FILES=$(foreach WORKPLACE, $(WORKPLACES), $(foreach LANGUAGE, $(LANGUAGES),$(addprefix $(PREFIX)-$(WORKPLACE)-$(LANGUAGE), .pdf -color.pdf)))
+EXTENSIONS=pdf eps
+FILES=$(foreach WORKPLACE, $(WORKPLACES), $(foreach LANGUAGE, $(LANGUAGES), $(foreach EXTENSION, $(EXTENSIONS), $(addprefix $(PREFIX)-$(WORKPLACE)-$(LANGUAGE), .$(EXTENSION) -color.$(EXTENSION)))))
 
 find_candidate=\
 	@FILENAME=$(2); \
@@ -40,6 +41,11 @@ all: $(FILES)
 	$(call find_candidate,$(CZECH_COLOR_GLOB),$@)
 	@if [[ -e $@ ]] && [[ `md5sum <$@` = `md5sum <$$(sed 's/-czech-color\.pdf$$/-english-color.pdf/' <<<$@)` ]]; then \
 		rm -v $@; \
+	fi
+
+%.eps: %.pdf
+	@if [[ -e $< ]]; then \
+		inkscape --export-eps=$@ $<; \
 	fi
 
 clean:

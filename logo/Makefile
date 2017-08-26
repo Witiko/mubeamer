@@ -5,7 +5,8 @@ WORKPLACES=arch ceitec cerit ctt czs econ fi fsps fss iba ics is kariera lang \
 	law med mu muzeu ped phil press ptceitec rect sci skm teiresias ucb uct
 PREFIX=mubeamer
 LANGUAGES=english czech
-FILES=$(foreach WORKPLACE, $(WORKPLACES), $(foreach LANGUAGE, $(LANGUAGES),$(addprefix $(PREFIX)-$(WORKPLACE)-$(LANGUAGE), .pdf -color.pdf)))
+EXTENSIONS=pdf eps
+FILES=$(foreach WORKPLACE, $(WORKPLACES), $(foreach LANGUAGE, $(LANGUAGES), $(foreach EXTENSION, $(EXTENSIONS), $(addprefix $(PREFIX)-$(WORKPLACE)-$(LANGUAGE), .$(EXTENSION) -color.$(EXTENSION)))))
 
 find_candidate=\
 	@FILENAME=$(2); \
@@ -48,6 +49,11 @@ $(PREFIX)-ptceitec-english.pdf: $(PREFIX)-ceitec-english.pdf
 
 $(PREFIX)-ptceitec-english-color.pdf: $(PREFIX)-ceitec-english-color.pdf
 	cp -v $< $@
+
+%.eps: %.pdf
+	@if [[ -e $< ]]; then \
+		inkscape --export-eps=$@ $<; \
+	fi
 
 clean:
 	rm -f $(FILES)
