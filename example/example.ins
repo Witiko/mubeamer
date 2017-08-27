@@ -1,0 +1,20 @@
+\input docstrip
+\nopreamble
+\nopostamble
+\def\workplaces#1 {%
+  \if#1.\else
+    \file{#1.tex}{\from{example.dtx}{color,english,#1,43,pdftex,paratype}}
+    \file{#1-gray.tex}{\from{example.dtx}{gray,english,#1,43,pdftex,paratype}}
+    \file{#1-czech.tex}{\from{example.dtx}{color,czech,#1,43,pdftex,paratype}}
+    \file{#1-slovak.tex}{\from{example.dtx}{color,slovak,#1,43,pdftex,paratype}}
+    \file{#1-aspect-16_9.tex}{\from{example.dtx}{color,english,#1,169,pdftex,paratype}}
+    \file{#1-aspect-16_10.tex}{\from{example.dtx}{color,english,#1,1610,pdftex,paratype}}
+    \file{#1-xetex-luatex.tex}{\from{example.dtx}{color,english,#1,43,xetex,paratype}}
+    \file{#1-fonts-lmodern.tex}{\from{example.dtx}{color,english,#1,43,pdftex,lmodern}}
+    \expandafter\workplaces
+  \fi}
+\generate{%
+  \workplaces arch ceitec cerit ctt czs econ fi fsps fss iba ics is kariera
+    lang law med mu muzeu ped phil press ptceitec rect sci skm teiresias ucb
+    uct . }
+\endbatchfile
