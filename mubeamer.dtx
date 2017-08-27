@@ -121,8 +121,13 @@
 % \textsc{dvi} and \textsc{pdf} mode.
 %
 % \subsection{Required Packages}
-% \textsf{Mubeamer} requires no external packages. Optional packages include
-% font packages as documented in section \ref{sec:processing_options}.
+% \textsf{Mubeamer} requires the \textsf{etoolbox} package to patch the
+% |\includegraphics| command in section \ref{sec:filenames_and_pathnames}.
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+%    \end{macrocode}
+% Optional packages include font packages as documented in section
+% \ref{sec:processing_options}.
 %
 % \section{Basic Usage}
 % To use \textsf{mubeamer}, specify |\usetheme|\oarg{options}|{MU}| in the
@@ -384,7 +389,7 @@
 % \end{macro}^^A{\mubeamer@option@locale@label}
 % \end{macro}^^A{\mubeamer@option@locale@logo}
 %
-% \section{Filenames and Pathnames}
+% \section{Filenames and Pathnames}\label{sec:filenames_and_pathnames}
 % \begin{macro}{\mubeamer@pathname@base}
 % |\mubeamer@pathname@base| is the pathname of the base directory
 % containing logo, label either directly or in subdirectories.
