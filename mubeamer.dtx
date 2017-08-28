@@ -107,7 +107,7 @@
 %
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeMU}[2017/08/27]
+\ProvidesPackage{beamerthemeMU}[2017/08/28]
 \mode<presentation>
 %    \end{macrocode}
 %
@@ -441,6 +441,19 @@
 %    \end{macrocode}
 % \end{macro}
 %
+% \begin{macro}{\mubeamer@filename@logo@lastresort}
+% |\mubeamer@filename@logo@lastresort| is the filename of the logo that will be
+% displayed at the bottom of the title page if
+% |\mubeamer@filename@logo@fallback| is not found.
+%    \begin{macrocode}
+\def\mubeamer@filename@logo@lastresort{%
+  \mubeamer@pathname@logo mubeamer-mu-english%
+    \ifmubeamer@option@gray\else
+      -color%
+    \fi}
+%    \end{macrocode}
+% \end{macro}
+%
 % \begin{macro}{\mubeamer@filename@label}
 % |\mubeamer@filename@label| is the filename of the label that will be
 % displayed at the top of all frames.
@@ -469,22 +482,30 @@
 %
 % \begin{macro}{\mubeamer@subroutine@includegraphics}
 % |\mubeamer@subroutine@includegraphics|\oarg{\texttt{\textbackslash
-% includegraphics} options}\marg{primary file name}\marg{fallback file
-% name} tries to display the graphics file \meta{primary file name}. If
-% \meta{primary file name} is not found, \meta{fallback file name} is tried
-% instead. If neither graphics file is found, an empty box with the specified
-% height is displayed.
+% includegraphics} options}\marg{primary file name}\marg{secondary file
+% name}\marg{tertiary file name} attempts to display the graphics file
+% \meta{primary file name}. If \meta{primary file name} is not found,
+% \meta{secondary file name} is tried instead. If \meta{secondary file name} is
+% not found either, and \meta{tertiary file name} is non-empty, then
+% \meta{tertiary file name} is tried. If neither graphics file is found, an
+% empty box with the specified height is displayed.
 %    \begin{macrocode}
-\newcommand*\mubeamer@subroutine@includegraphics[3][]{%
-  \newif\ifmubeamer@temp@recursion
+\newcount\mubeamer@temp@recursion
+\newcommand*\mubeamer@subroutine@includegraphics[4][]{%
   \begingroup
-  \mubeamer@temp@recursiontrue
+  \mubeamer@temp@recursion=0
   \patchcmd{\Gin@ii}{\Gin@esetsize}{%
     \rule{0pt}{\@ifundefined{Gin@eheight}{0pt}{\Gin@eheight}}%
     \renewcommand{\@latex@error}[2]{%
-      \ifmubeamer@temp@recursion
-        \mubeamer@temp@recursionfalse
-        \includegraphics[#1]{#3}
+      \ifnum\mubeamer@temp@recursion<2
+        \advance\mubeamer@temp@recursion by 1
+        \ifnum\mubeamer@temp@recursion=1
+          \includegraphics[#1]{#3}
+        \else
+          \if\empty#4\empty\else
+            \includegraphics[#1]{#4}
+          \fi
+        \fi
       \fi}%
     \Gin@esetsize}{}{%
       \PackageError{beamerthemeMU}%
@@ -660,7 +681,7 @@
   \mubeamer@subroutine@includegraphics%
     [height=\mubeamer@temp@length]%
     {\mubeamer@filename@label}%
-    {\mubeamer@filename@label@fallback}}
+    {\mubeamer@filename@label@fallback}{}}
 %    \end{macrocode}
 % The frame title and subtitle are displayed underneath the label.
 %    \begin{macrocode}
@@ -721,6 +742,7 @@
     ]%
     {\mubeamer@filename@logo}%
     {\mubeamer@filename@logo@fallback}%
+    {\mubeamer@filename@logo@lastresort}
   \vskip\mubeamer@length@margin}
 %    \end{macrocode}
 % Bibliography entries are preceded with the reference text (like ``[Dijkstra,
