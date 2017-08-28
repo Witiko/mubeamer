@@ -107,7 +107,7 @@
 %
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeMU}[2017/08/28]
+\ProvidesPackage{beamerthemeMU}[2017/08/29]
 \mode<presentation>
 %    \end{macrocode}
 %
@@ -487,25 +487,35 @@
 % \meta{primary file name}. If \meta{primary file name} is not found,
 % \meta{secondary file name} is tried instead. If \meta{secondary file name} is
 % not found either, and \meta{tertiary file name} is non-empty, then
-% \meta{tertiary file name} is tried. If neither graphics file is found, an
-% empty box with the specified height is displayed.
+% \meta{tertiary file name} is tried.
 %    \begin{macrocode}
 \newcount\mubeamer@temp@recursion
 \newcommand*\mubeamer@subroutine@includegraphics[4][]{%
   \begingroup
   \mubeamer@temp@recursion=0
   \patchcmd{\Gin@ii}{\Gin@esetsize}{%
-    \rule{0pt}{\@ifundefined{Gin@eheight}{0pt}{\Gin@eheight}}%
     \renewcommand{\@latex@error}[2]{%
       \ifnum\mubeamer@temp@recursion<2
         \advance\mubeamer@temp@recursion by 1
         \ifnum\mubeamer@temp@recursion=1
           \includegraphics[#1]{#3}
         \else
-          \if\empty#4\empty\else
+          \if\empty#4\empty
+            \PackageError{beamerthemeMU}%
+              {none of the following graphics files was found: #2, #3}%
+              {check that the mubeamer package has been correctly
+               installed\MessageBreak and that you specified an existing
+               workplace}%
+          \else
             \includegraphics[#1]{#4}
           \fi
         \fi
+      \else
+        \PackageError{beamerthemeMU}%
+          {none of the following graphics files was found: #2, #3, #4}%
+          {check that the mubeamer package has been correctly
+           installed\MessageBreak and that you specified an existing
+           workplace}%
       \fi}%
     \Gin@esetsize}{}{%
       \PackageError{beamerthemeMU}%
