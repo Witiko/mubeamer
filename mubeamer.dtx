@@ -291,18 +291,24 @@
 \ifmubeamer@option@scaling
   \RequirePackage{PTSansCaption}
   \@ifpackageloaded{fontspec}{
+    \begingroup
     \newfontfamily\mubeamer@temp@fontname
       [NFSSFamily=PTSansCaption-TLF]{PT Sans Caption}
+    \endgroup
   }{}
 \fi
 \ifmubeamer@option@fonts
   \RequirePackage{PTSans}
   \RequirePackage{PTMono}
   \@ifpackageloaded{fontspec}{
+    \begingroup
     \newfontfamily\mubeamer@temp@fontname
       [NFSSFamily=PTSans-TLF]{PT Sans}
+    \endgroup
+    \begingroup
     \newfontfamily\mubeamer@temp@fontname
       [NFSSFamily=PTMono-TLF]{PT Mono}
+    \endgroup
   }{}
 \fi
 \newif\ifmubeamer@scaling@enabled
