@@ -26,8 +26,16 @@
   year          =   {2005},
   title         =   {Manu\'al01},
   subtitle      =   {Designmanu\'al jednotn\'eho vizu\'aln\'iho stylu},
-  urldate       =   {2017-08-25},
+  urldate       =   {2018-12-17},
   url           =   {https://sablony.muni.cz/media/24132/design_manual_2005_platne_kapitoly.pdf},
+  langid        =   {czech}}
+@MANUAL{muni18,
+  author        =   {Tom\'a\v{s} Kudela},
+  year          =   {2018},
+  title         =   {MUNI Designmanu\'al},
+  subtitle      =   {Jednotn\'y vizu\'an\'i styl MUNI},
+  urldate       =   {2018-12-17},
+  url           =   {https://muni.brandcloud.pro},
   langid        =   {czech}}
 \end{filecontents}
 \usepackage[
@@ -107,7 +115,7 @@
 %
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeMU}[2017/08/29]
+\ProvidesPackage{beamerthemeMU}[2019/01/09]
 \mode<presentation>
 %    \end{macrocode}
 %
@@ -117,8 +125,8 @@
 % \section{Requirements}
 % \subsection{Required \TeX{} Engine}
 % \textsf{Mubeamer} should work out-of-box with all conventional \TeX\ engines
-% (\TeX, \hologo{eTeX}, \hologo{pdfTeX}, Lua\TeX, \hologo{XeTeX}) both in
-% \textsc{dvi} and \textsc{pdf} mode.
+% (\TeX, \hologo{eTeX}, \hologo{pdfTeX}, Lua\TeX, \hologo{XeTeX}) in
+% \textsc{pdf} mode.
 %
 % \subsection{Required Packages}
 % \textsf{Mubeamer} requires the \textsf{etoolbox} package to patch the
@@ -188,7 +196,8 @@
 %   Faculty of Arts & |phil| \\
 %   Masaryk University Press & |press| \\
 %   Central Management Structure of the Ceitec Project & |ptceitec| \\
-%   Rector's Office & |rect| \\
+%   Rector's Office & |rect-office| \\
+%   Rector & |rect| \\
 %   Faculty of Science & |sci| \\
 %   Accomodation and Catering Services & |skm| \\
 %   Support Centre for Students with Special Needs & |teiresias| \\
@@ -383,17 +392,14 @@
 % \end{macro}^^A{\mubeamer@scaling@family@basic}
 % \end{macro}^^A{\ifmubeamer@scaling@enabled}
 %
-% \begin{macro}{\mubeamer@option@locale@logo}
 % \begin{macro}{\mubeamer@option@locale@label}
 % |\mubeamer@option@locale@{logo,label}| specify separately the locale for
 % logos and for labels. Both commands inherit the value of
 % |\mubeamer@option@locale|.
 %    \begin{macrocode}
-\def\mubeamer@option@locale@logo{\mubeamer@option@locale}
 \def\mubeamer@option@locale@label{\mubeamer@option@locale}
 %    \end{macrocode}
-% \end{macro}^^A{\mubeamer@option@locale@label}
-% \end{macro}^^A{\mubeamer@option@locale@logo}
+% \end{macro}
 %
 % \section{Filenames and Pathnames}\label{sec:filenames_and_pathnames}
 % \begin{macro}{\mubeamer@pathname@base}
@@ -404,15 +410,7 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \subsection{Logos and Labels}
-% \begin{macro}{\mubeamer@pathname@logo}
-% |\mubeamer@pathname@logo| is the pathname of the base directory
-% directly containing logo files.
-%    \begin{macrocode}
-\def\mubeamer@pathname@logo{\mubeamer@pathname@base logo/}
-%    \end{macrocode}
-% \end{macro}
-%
+% \subsection{Labels}
 % \begin{macro}{\mubeamer@pathname@label}
 % |\mubeamer@pathname@label| is the pathname of the base directory
 % directly containing label files.
@@ -421,48 +419,9 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\mubeamer@filename@logo}
-% |\mubeamer@filename@logo| is the filename of the logo that will be
-% displayed at the bottom of the title page.
-%    \begin{macrocode}
-\def\mubeamer@filename@logo{%
-  \mubeamer@pathname@logo mubeamer-\mubeamer@option@workplace-%
-    \mubeamer@option@locale@logo
-    \ifmubeamer@option@gray\else
-      -color%
-    \fi}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\mubeamer@filename@logo@fallback}
-% |\mubeamer@filename@logo@fallback| is the filename of the logo that will
-% be displayed at the bottom of the title page if |\mubeamer@filename@logo| is
-% not found.
-%    \begin{macrocode}
-\def\mubeamer@filename@logo@fallback{%
-  \mubeamer@pathname@logo mubeamer-\mubeamer@option@workplace-english%
-    \ifmubeamer@option@gray\else
-      -color%
-    \fi}
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\mubeamer@filename@logo@lastresort}
-% |\mubeamer@filename@logo@lastresort| is the filename of the logo that will be
-% displayed at the bottom of the title page if
-% |\mubeamer@filename@logo@fallback| is not found.
-%    \begin{macrocode}
-\def\mubeamer@filename@logo@lastresort{%
-  \mubeamer@pathname@logo mubeamer-mu-english%
-    \ifmubeamer@option@gray\else
-      -color%
-    \fi}
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{macro}{\mubeamer@filename@label}
 % |\mubeamer@filename@label| is the filename of the label that will be
-% displayed at the top of all frames.
+% displayed at the top of the title page.
 %    \begin{macrocode}
 \def\mubeamer@filename@label{%
   \mubeamer@pathname@label mubeamer-\mubeamer@option@workplace-%
@@ -475,11 +434,24 @@
 %
 % \begin{macro}{\mubeamer@filename@label@fallback}
 % |\mubeamer@filename@label@fallback| is the filename of the label that will be
-% displayed at the top of all frames if |\mubeamer@filwname@label| is not
-    % found.
+% displayed at the top of the title page if |\mubeamer@filename@label| is
+% not found.
 %    \begin{macrocode}
 \def\mubeamer@filename@label@fallback{%
   \mubeamer@pathname@label mubeamer-\mubeamer@option@workplace-english%
+    \ifmubeamer@option@gray\else
+      -color%
+    \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mubeamer@filename@label@lastresort}
+% |\mubeamer@filename@label@lastresort| is the filename of the label that will be
+% displayed at the top of the title page if both |\mubeamer@filename@label| and
+% |\mubeamer@filename@label@fallback| are not found.
+%    \begin{macrocode}
+\def\mubeamer@filename@label@lastresort{%
+  \mubeamer@pathname@label mubeamer-mu-english%
     \ifmubeamer@option@gray\else
       -color%
     \fi}
@@ -555,19 +527,10 @@
 % \subsubsection{Spacing}
 % \begin{macro}{\mubeamer@length@margin}
 % |\mubeamer@length@margin| is the horizontal margin across all frames and the
-% bottom margin of the title frame.
+% bottom margin of the title page.
 %    \begin{macrocode}
 \newlength\mubeamer@length@margin
 \mubeamer@length@margin=0.7cm
-%    \end{macrocode}
-% \end{macro}
-%
-% \begin{macro}{\mubeamer@length@toppadding}
-% |\mubeamer@length@toppadding| is the distance between the headline and the
-% frame title.
-%    \begin{macrocode}
-\newlength\mubeamer@length@toppadding
-\mubeamer@length@toppadding=28pt
 %    \end{macrocode}
 % \end{macro}
 %
@@ -579,15 +542,6 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\mubeamer@length@logotopmargin}
-% |\mubeamer@length@logotopmargin| specifies the top margin of the logo
-% displayed at the bottom of the title page.
-%    \begin{macrocode}
-\newlength\mubeamer@length@logotopmargin
-\mubeamer@length@logotopmargin=\mubeamer@length@margin
-%    \end{macrocode}
-% \end{macro}
-%
 % \begin{macro}{\mubeamer@length@footlineheight}
 % |\mubeamer@length@footlineheight| is the total height of the footline.
 %    \begin{macrocode}
@@ -596,56 +550,26 @@
 %    \end{macrocode}
 % \end{macro}
 % \subsubsection{Label and Logo Size}
-% \begin{macro}{\mubeamer@length@labelwidth@titlepage}
-% \begin{macro}{\mubeamer@length@labelheight@titlepage}
-% |\mubeamer@length@label{width,height}@titlepage| specify the dimensions of
-% the label displayed at the top of the title page.
-%    \begin{macrocode}
-\newlength\mubeamer@length@labelwidth@titlepage
-\newlength\mubeamer@length@labelheight@titlepage
-\mubeamer@length@labelwidth@titlepage=3.5cm
-\mubeamer@length@labelheight@titlepage=1.4cm
-%    \end{macrocode}
-% \end{macro}^^A{\mubeamer@length@labelheight@titlepage}
-% \end{macro}^^A{\mubeamer@length@labelwidth@titlepage}
-%
-% \begin{macro}{\mubeamer@length@labelwidth}
 % \begin{macro}{\mubeamer@length@labelheight}
-% |\mubeamer@length@label{width,height}| specify the dimensions of the label
-% displayed at the top of all frames other than the title page.
+% |\mubeamer@length@labelheight| specifies the height of the label displayed at
+% the top of the title page.
 %    \begin{macrocode}
-\newlength\mubeamer@length@labelwidth
 \newlength\mubeamer@length@labelheight
-\mubeamer@length@labelwidth=2.7cm
-\mubeamer@length@labelheight=1.08cm
+\mubeamer@length@labelheight=1.4cm
 %    \end{macrocode}
-% \end{macro}^^A{\mubeamer@length@labelheight@titlepage}
-% \end{macro}^^A{\mubeamer@length@labelwidth@titlepage}
-%
-% \begin{macro}{\mubeamer@length@logomaxwidth}
-% \begin{macro}{\mubeamer@length@logomaxheight}
-% |\mubeamer@length@logomax{width,height}| specify the maximum dimensions of
-% the logo displayed at the bottom of the title page.
-%    \begin{macrocode}
-\newlength\mubeamer@length@logomaxwidth
-\newlength\mubeamer@length@logomaxheight
-\mubeamer@length@logomaxwidth=3cm
-\mubeamer@length@logomaxheight=1.5cm
-%    \end{macrocode}
-% \end{macro}^^A{\mubeamer@length@logomaxheight}
-% \end{macro}^^A{\mubeamer@length@logomaxwidth}
+% \end{macro}
 %
 % \subsection{Colors}
 % The following colors are specified in the \textsc{rgb} color space assuming the 
 % sRGB IEC61966 v2.1 color profile with black scaling. The colors are taken
 % directly from the design manual of the Masaryk University in
-% Brno~\cite{jilek05}.
+% Brno~\cite{jilek05,muni18}.
 % \subsubsection{Basic Palette}
-% The basic palette is defined in \cite[section~2.01]{jilek05}. It consists of a
-% base color, seven shades of gray as the neutral colors, and two hues of
-% orange as the accent colors.
+% The basic palette is defined in \autocites[section~2.01]{jilek05}{muni18}. It
+% consists of a base color, seven shades of gray as the neutral colors, and two
+% hues of orange as the accent colors.
 %    \begin{macrocode}
-\definecolor{mubeamer@base}{RGB}{0,39,118}
+\definecolor{mubeamer@base}{RGB}{0,0,220}
 \definecolor{mubeamer@gray1}{RGB}{240,240,240}
 \definecolor{mubeamer@gray2}{RGB}{225,225,225}
 \definecolor{mubeamer@gray3}{RGB}{210,210,210}
@@ -657,17 +581,17 @@
 \definecolor{mubeamer@orange2}{RGB}{240,140,0}
 %    \end{macrocode}
 % \subsubsection{Faculty Colors}
-% The faculty colors are defined in \cite[section~2.03]{jilek05}.
+% The faculty colors are defined in \autocites[section~2.03]{jilek05}{muni18}.
 %    \begin{macrocode}
-\definecolor{mubeamer@law}{RGB}{128,55,155}
+\definecolor{mubeamer@law}{RGB}{145,0,220}
 \definecolor{mubeamer@med}{RGB}{240,25,40}
 \definecolor{mubeamer@sci}{RGB}{0,175,63}
-\definecolor{mubeamer@phil}{RGB}{0,161,222}
-\definecolor{mubeamer@ped}{RGB}{255,160,47}
-\definecolor{mubeamer@econ}{RGB}{120,35,39}
-\definecolor{mubeamer@fi}{RGB}{252,212,80}
-\definecolor{mubeamer@fss}{RGB}{0,123,105}
-\definecolor{mubeamer@fsps}{RGB}{0,154,166}
+\definecolor{mubeamer@phil}{RGB}{75,200,255}
+\definecolor{mubeamer@ped}{RGB}{255,115,0}
+\definecolor{mubeamer@econ}{RGB}{185,0,110}
+\definecolor{mubeamer@fi}{RGB}{242,212,92}
+\definecolor{mubeamer@fss}{RGB}{0,122,83}
+\definecolor{mubeamer@fsps}{RGB}{90,200,175}
 %    \end{macrocode}
 %
 % \subsection{Beamer Settings}
@@ -684,25 +608,9 @@
   text margin right=\mubeamer@length@margin}
 %    \end{macrocode}
 % \subsubsection{Templates}
-% The work~place-specific label is diplayed at the top of all frames. The label
-% is larger at the title page.
-%    \begin{macrocode}
-\setbeamertemplate{background canvas}{%
-  \ifnum\value{page}=1
-    \let\mubeamer@temp@length\mubeamer@length@labelheight@titlepage
-  \else
-    \let\mubeamer@temp@length\mubeamer@length@labelheight
-  \fi
-  \leavevmode\hskip\mubeamer@length@margin
-  \mubeamer@subroutine@includegraphics%
-    [height=\mubeamer@temp@length]%
-    {\mubeamer@filename@label}%
-    {\mubeamer@filename@label@fallback}{}}
-%    \end{macrocode}
 % The frame title and subtitle are displayed underneath the label.
 %    \begin{macrocode}
 \setbeamertemplate{frametitle}{%
-  \vskip\mubeamer@length@toppadding
   \vtop{{%
       \usebeamerfont{frametitle}{\insertframetitle}%
       \ifx\insertframesubtitle\@empty\else\\
@@ -721,14 +629,17 @@
   \hskip\mubeamer@length@margin
   \usebeamercolor[fg]{author in head/foot}%
     \usebeamerfont{author in head/foot}\insertshortauthor
-  \ \lower2pt\hbox{\Large$\cdot$}\ 
+  \usebeamercolor[fg]{structure}%
+    \usebeamerfont{structure}\ \lower2pt\hbox{\Large$\cdot$}\ 
   \usebeamercolor[fg]{title in head/foot}%
     \usebeamerfont{title in head/foot}\insertshorttitle
-  \ \lower2pt\hbox{\Large$\cdot$}\ 
+  \usebeamercolor[fg]{structure}%
+    \usebeamerfont{structure}\ \lower2pt\hbox{\Large$\cdot$}\ 
   \usebeamercolor[fg]{date in head/foot}%
-    \usebeamerfont{date in head/foot}\insertshortdate
-  \hfill
-  \insertframenumber{} / \inserttotalframenumber
+    \usebeamerfont{date in head/foot}\insertshortdate\hfill
+  \usebeamercolor[fg]{page number in head/foot}%
+    \usebeamerfont{author in head/foot}\insertframenumber\ /
+    \inserttotalframenumber
   \hskip\mubeamer@length@margin
   \vrule width 0pt height \mubeamer@length@footlineheight
          depth \mubeamer@length@footlinebottompadding}
@@ -738,27 +649,26 @@
 % by mistake.
 %    \begin{macrocode}
 \setbeamertemplate{title page}{%
-  \vskip0pt plus 1filll
+  \vskip\mubeamer@length@margin
+  \mubeamer@subroutine@includegraphics%
+    [height=\mubeamer@length@labelheight]%
+    {\mubeamer@filename@label}%
+    {\mubeamer@filename@label@fallback}%
+    {\mubeamer@filename@label@lastresort}%
+  \vskip0pt plus 6filll
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}%
-    \medskip
+  \vskip0pt plus 1filll
 
   {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}%
-    \bigskip
+  \vskip0pt plus 4filll
 
   {\usebeamerfont{author} \insertauthor}%
-    \medskip
+  \vskip0pt plus 1filll
+
+  {\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}%
+  \vskip0pt plus 1filll
 
   {\usebeamerfont{date} \insertdate}%
-  \vskip\mubeamer@length@logotopmargin
-  \mubeamer@subroutine@includegraphics%
-    [
-      width=\mubeamer@length@logomaxwidth,
-      height=\mubeamer@length@logomaxheight,
-      keepaspectratio
-    ]%
-    {\mubeamer@filename@logo}%
-    {\mubeamer@filename@logo@fallback}%
-    {\mubeamer@filename@logo@lastresort}
   \vskip\mubeamer@length@margin}
 %    \end{macrocode}
 % Bibliography entries are preceded with the reference text (like ``[Dijkstra,
@@ -776,23 +686,30 @@
 %    \end{macrocode}
 % \subsubsection{Fonts and Colors}
 %    \begin{macrocode}
-\setbeamerfont{structure}{series=\bfseries}
-\setbeamercolor{structure}{fg=mubeamer@gray6}
+\setbeamerfont{structure}{series=\mdseries}
+\setbeamercolor{structure}{fg=mubeamer@base}
 
 \setbeamerfont{alerted text}{series=\bfseries}
 \setbeamercolor{alerted text}{fg=mubeamer@orange2}
 
-\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamerfont{title}{size=\huge,series=\bfseries}
 \setbeamercolor{title}{fg=mubeamer@base}
 \setbeamerfont{title in head/foot}{size=\tiny,series=\bfseries}
 \setbeamercolor{title in head/foot}{parent=structure}
 
+\setbeamerfont{subtitle}{size=\large,series=\mdseries}
+\setbeamercolor{subtitle}{fg=black}
+
 \setbeamerfont{author}{series=\bfseries,size=\small}
-\setbeamerfont{author in head/foot}{size=\tiny,series=\bfseries}
+\setbeamerfont{author in head/foot}{size=\tiny,series=\mdseries}
 \setbeamercolor{author in head/foot}{parent=structure}
 
+\setbeamerfont{page number}{series=\footnotesize}
+\setbeamerfont{page number in head/foot}{size=\tiny,series=\mdseries}
+\setbeamercolor{page number in head/foot}{parent=structure}
+
 \setbeamerfont{date}{size=\footnotesize}
-\setbeamerfont{date in head/foot}{size=\tiny,series=\bfseries}
+\setbeamerfont{date in head/foot}{size=\tiny,series=\mdseries}
 \setbeamercolor{date in head/foot}{parent=structure}
 
 \setbeamerfont{frametitle}{series=\bfseries,size=\Large}
@@ -800,6 +717,8 @@
 
 \setbeamerfont{framesubtitle}{series=\bfseries,size=\large}
 \setbeamercolor{framesubtitle}{parent=subtitle}
+
+\setbeamerfont{section in head/foot}{series=\bfseries}
 
 \setbeamercolor{bibliography entry author}{%
   use=normal text,fg=normal text.fg}

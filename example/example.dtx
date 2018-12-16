@@ -1,138 +1,59 @@
 %    \begin{macrocode}
 \documentclass[
-%<*gray>
-  gray,
-%</gray>
-%<*169>
-  aspectratio=169,
-%</169>
-%<*1610>
-  aspectratio=1610,
-%</1610>
+%<gray>  gray,
+%<169>  aspectratio=169,
+%<1610>  aspectratio=1610,
 ]{beamer}
 
 %<*pdftex>
-%<*czech>
-\usepackage[czech]{babel}
-%</czech>
-%<*slovak>
-\usepackage[slovak]{babel}
-%</slovak>
-%<*english>
-\usepackage[english]{babel}
-%</english>
+%<czech>\usepackage[czech]{babel}
+%<slovak>\usepackage[slovak]{babel}
+%<english>\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-%<*lmodern>
-\usepackage{lmodern}
-%</lmodern>
+%<lmodern>\usepackage{lmodern}
 %</pdftex>
 %<*xetex>
 \usepackage[no-math]{fontspec}
 \defaultfontfeatures{Mapping=tex-text}
 \usepackage{polyglossia}
-%<*czech>
-\setmainlanguage{czech}
-%</czech>
-%<*slovak>
-\setmainlanguage{slovak}
-%</slovak>
-%<*english>
-\setmainlanguage{english}
-%</english>
+%<czech>\setmainlanguage{czech}
+%<slovak>\setmainlanguage{slovak}
+%<english>\setmainlanguage{english}
 %</xetex>
 \usepackage{booktabs}
 \usetheme[
-%<*arch>
-  workplace=arch,
-%</arch>
-%<*ceitec>
-  workplace=ceitec,
-%</ceitec>
-%<*cerit>
-  workplace=cerit,
-%</cerit>
-%<*ctt>
-  workplace=ctt,
-%</ctt>
-%<*czs>
-  workplace=czs,
-%</czs>
-%<*econ>
-  workplace=econ,
-%</econ>
-%<*fi>
-  workplace=fi,
-%</fi>
-%<*fsps>
-  workplace=fsps,
-%</fsps>
-%<*fss>
-  workplace=fss,
-%</fss>
-%<*iba>
-  workplace=iba,
-%</iba>
-%<*ics>
-  workplace=ics,
-%</ics>
-%<*is>
-  workplace=is,
-%</is>
-%<*kariera>
-  workplace=kariera,
-%</kariera>
-%<*lang>
-  workplace=lang,
-%</lang>
-%<*law>
-  workplace=law,
-%</law>
-%<*med>
-  workplace=med,
-%</med>
-%<*mu>
-  workplace=mu,
-%</mu>
-%<*muzeu>
-  workplace=muzeu,
-%</muzeu>
-%<*ped>
-  workplace=ped,
-%</ped>
-%<*phil>
-  workplace=phil,
-%</phil>
-%<*press>
-  workplace=press,
-%</press>
-%<*ptceitec>
-  workplace=ptceitec,
-%</ptceitec>
-%<*rect>
-  workplace=rect,
-%</rect>
-%<*sci>
-  workplace=sci,
-%</sci>
-%<*skm>
-  workplace=skm,
-%</skm>
-%<*teiresias>
-  workplace=teiresias,
-%</teiresias>
-%<*ucb>
-  workplace=ucb,
-%</ucb>
-%<*uct>
-  workplace=uct,
-%</uct>
-%<*slovak>
-  locale=czech,
-%</slovak>
-%<*lmodern>
-  fonts=none,
-%</lmodern>
+%<arch>  workplace=arch,
+%<ceitec>  workplace=ceitec,
+%<cerit>  workplace=cerit,
+%<ctt>  workplace=ctt,
+%<czs>  workplace=czs,
+%<econ>  workplace=econ,
+%<fi>  workplace=fi,
+%<fsps>  workplace=fsps,
+%<fss>  workplace=fss,
+%<iba>  workplace=iba,
+%<ics>  workplace=ics,
+%<is>  workplace=is,
+%<kariera>  workplace=kariera,
+%<lang>  workplace=lang,
+%<law>  workplace=law,
+%<med>  workplace=med,
+%<mu>  workplace=mu,
+%<muzeu>  workplace=muzeu,
+%<ped>  workplace=ped,
+%<phil>  workplace=phil,
+%<press>  workplace=press,
+%<ptceitec>  workplace=ptceitec,
+%<rect>  workplace=rect,
+%<rect-office>  workplace=rect-office,
+%<sci>  workplace=sci,
+%<skm>  workplace=skm,
+%<teiresias>  workplace=teiresias,
+%<ucb>  workplace=ucb,
+%<uct>  workplace=uct,
+%<slovak>  locale=czech,
+%<lmodern>  fonts=none,
 ]{MU}
 \begin{document}
 
@@ -140,90 +61,35 @@
 \title[Název prezentace]{Dlouhý název prezentace}
 \subtitle[Alternativní název prezentace]{Dlouhý alternativní název prezentace}
 \author[J.\,Příjmení]{Jméno Příjmení \\ učo@mail.muni.cz}
-%<*arch>
-\institute[Archiv MU]{Archiv Masarykovy univerzity}
-%</arch>
-%<*ceitec>
-\institute[CEITEC MU]{Středoevropský technologický institut, Masarykova univerzita}
-%</ceitec>
-%<*cerit>
-\institute[CERIT-SC MU]{CERIT Scientific Cloud, Masarykova univerzita}
-%</cerit>
-%<*ctt>
-\institute[CTT MU]{Centrum pro transfer technologií Masarykovy univerzity}
-%</ctt>
-%<*czs>
-\institute[CZS MU]{Centrum zahraniční spolupráce Masarykovy univerzity}
-%</czs>
-%<*econ>
-\institute[ESF MU]{Ekonomicko-správní fakulta Masarykovy univerzity}
-%</econ>
-%<*fi>
-\institute[FI MU]{Fakulta informatiky Masarykovy univerzity}
-%</fi>
-%<*fsps>
-\institute[FSpS MU]{Fakulta sportovních studií Masarykovy univerzity}
-%</fsps>
-%<*fss>
-\institute[FSS MU]{Fakulta sociálních studií Masarykovy univerzity}
-%</fss>
-%<*iba>
-\institute[IBA MU]{Institut biostatistiky a analýz Masarykovy Univerzity}
-%</iba>
-%<*ics>
-\institute[ÚVT MU]{Ústav výpočetní techniky Masarykovy univerzity}
-%</ics>
-%<*is>
-\institute[IS MU]{Informační systém Masarykovy univerzity}
-%</is>
-%<*kariera>
-\institute[Kariérní centrum MU]{Kariérní centrum Masarykovy univerzity}
-%</kariera>
-%<*lang>
-\institute[CJV MU]{Centrum jazykového vzdělávání Masarykovy univerzity}
-%</lang>
-%<*law>
-\institute[PrF MU]{Právnická fakulta Masarykovy univerzity}
-%</law>
-%<*med>
-\institute[LF MU]{Lékařská fakulta Masarykovy univerzity}
-%</med>
-%<*mu>
-\institute[MU]{Masarykova univerzita}
-%</mu>
-%<*muzeu>
-\institute[Mendelovo muzeum MU]{Mendelovo muzeum Masarykovy univerzity}
-%</muzeu>
-%<*ped>
-\institute[PdF MU]{Pedagogická fakulta Masarykovy univerzity}
-%</ped>
-%<*phil>
-\institute[FF MU]{Filozofická fakulta Masarykovy univerzity}
-%</phil>
-%<*press>
-\institute[Munipress]{Nakladatelství Masarykovy univerzity}
-%</press>
-%<*ptceitec>
-\institute[CEITEC MU]{Centrální řídící struktura projektu CEITEC, Masarykova univerzita}
-%</ptceitec>
-%<*rect>
-\institute[Rektorát MU]{Rektorát Masarykovy univerzity}
-%</rect>
-%<*sci>
-\institute[PřF MU]{Přírodovědecká fakulta Masarykovy univerzity}
-%</sci>
-%<*skm>
-\institute[SKM MU]{Správa kolejí a menz Masarykovy univerzity}
-%</skm>
-%<*teiresias>
-\institute[Středisko Teiresiás MU]{Středisko pro pomoc studentům se specifickými nároky, Masarykova univerzita}
-%</teiresias>
-%<*ucb>
-\institute[Správa univerzitního kampusu Bohunice MU]{Správa univerzitního kampusu Bohunice, Masarykova univerzita}
-%</ucb>
-%<*uct>
-\institute[Univerzitní centrum Telč MU]{Univerzitní centrum Telč, Masarykova univerzita}
-%</uct>
+%<arch>\institute[Archiv MU]{Archiv Masarykovy univerzity}
+%<ceitec>\institute[CEITEC MU]{Středoevropský technologický institut, Masarykova univerzita}
+%<cerit>\institute[CERIT-SC MU]{CERIT Scientific Cloud, Masarykova univerzita}
+%<ctt>\institute[CTT MU]{Centrum pro transfer technologií Masarykovy univerzity}
+%<czs>\institute[CZS MU]{Centrum zahraniční spolupráce Masarykovy univerzity}
+%<econ>\institute[ESF MU]{Ekonomicko-správní fakulta Masarykovy univerzity}
+%<fi>\institute[FI MU]{Fakulta informatiky Masarykovy univerzity}
+%<fsps>\institute[FSpS MU]{Fakulta sportovních studií Masarykovy univerzity}
+%<fss>\institute[FSS MU]{Fakulta sociálních studií Masarykovy univerzity}
+%<iba>\institute[IBA MU]{Institut biostatistiky a analýz Masarykovy Univerzity}
+%<ics>\institute[ÚVT MU]{Ústav výpočetní techniky Masarykovy univerzity}
+%<is>\institute[IS MU]{Informační systém Masarykovy univerzity}
+%<kariera>\institute[Kariérní centrum MU]{Kariérní centrum Masarykovy univerzity}
+%<lang>\institute[CJV MU]{Centrum jazykového vzdělávání Masarykovy univerzity}
+%<law>\institute[PrF MU]{Právnická fakulta Masarykovy univerzity}
+%<med>\institute[LF MU]{Lékařská fakulta Masarykovy univerzity}
+%<mu>\institute[MU]{Masarykova univerzita}
+%<muzeu>\institute[Mendelovo muzeum MU]{Mendelovo muzeum Masarykovy univerzity}
+%<ped>\institute[PdF MU]{Pedagogická fakulta Masarykovy univerzity}
+%<phil>\institute[FF MU]{Filozofická fakulta Masarykovy univerzity}
+%<press>\institute[Munipress]{Nakladatelství Masarykovy univerzity}
+%<ptceitec>\institute[CEITEC MU]{Centrální řídící struktura projektu CEITEC, Masarykova univerzita}
+%<rect>\institute[Rektor MU]{Rektor Masarykovy univerzity}
+%<rect-office>\institute[Rektorát MU]{Rektorát Masarykovy univerzity}
+%<sci>\institute[PřF MU]{Přírodovědecká fakulta Masarykovy univerzity}
+%<skm>\institute[SKM MU]{Správa kolejí a menz Masarykovy univerzity}
+%<teiresias>\institute[Středisko Teiresiás MU]{Středisko pro pomoc studentům se specifickými nároky, Masarykova univerzita}
+%<ucb>\institute[Správa univerzitního kampusu Bohunice MU]{Správa univerzitního kampusu Bohunice, Masarykova univerzita}
+%<uct>\institute[Univerzitní centrum Telč MU]{Univerzitní centrum Telč, Masarykova univerzita}
 \date{\today}
 \subject{Předmět prezentace}
 \keywords{klíčová, slova, prezentace}
@@ -232,90 +98,35 @@
 \title[Názov prezentácie]{Dlhý názov prezentácie}
 \subtitle[Alternatívny názov prezentácie]{Dlhý alternatívny názov prezentácie}
 \author[M.\,Priezvisko]{Meno Priezvisko \\ učo@mail.muni.cz}
-%<*arch>
-\institute[Archív MU]{Archív Masarykovej univerzity}
-%</arch>
-%<*ceitec>
-\institute[CEITEC MU]{Stredoeurópsky technologický inštitút, Masarykova univerzita}
-%</ceitec>
-%<*cerit>
-\institute[CERIT-SC MU]{CERIT Scientific Cloud, Masarykova univerzita}
-%</cerit>
-%<*ctt>
-\institute[CTT MU]{Centrum pre transfer technológií Masarykovej univerzity}
-%</ctt>
-%<*czs>
-\institute[CZS MU]{Centrum zahraničnej spolupráce Masarykovej univerzity}
-%</czs>
-%<*econ>
-\institute[ESF MU]{Ekonomicko-správna fakulta Masarykovej univerzity}
-%</econ>
-%<*fi>
-\institute[FI MU]{Fakulta informatiky Masarykovej univerzity}
-%</fi>
-%<*fsps>
-\institute[FSpS MU]{Fakulta športových štúdií Masarykovej univerzity}
-%</fsps>
-%<*fss>
-\institute[FSS MU]{Fakulta sociálnych štúdií Masarykovej univerzity}
-%</fss>
-%<*iba>
-\institute[IBA MU]{Ústav biostatistiky a analýz Masarykovej univerzity}
-%</iba>
-%<*ics>
-\institute[ÚVT MU]{Ústav výpočtovej techniky Masarykovy univerzity}
-%</ics>
-%<*is>
-\institute[IS MU]{Informačný systém Masarykovej univerzity}
-%</is>
-%<*kariera>
-\institute[Kariérne centrum MU]{Kariérne centrum Masarykovej univerzity}
-%</kariera>
-%<*lang>
-\institute[CJV MU]{Centrum jazykového vzdelávania Masarykovej univerzity}
-%</lang>
-%<*law>
-\institute[PrF MU]{Právnická fakulta Masarykovej univerzity}
-%</law>
-%<*med>
-\institute[LF MU]{Lekárska fakulta Masarykovej univerzity}
-%</med>
-%<*mu>
-\institute[MU]{Masarykova univerzita}
-%</mu>
-%<*muzeu>
-\ Inštitút [Mendelovo múzeum MU]{Mendelovo múzeum Masarykovej univerzity}
-%</muzeu>
-%<*ped>
-\institute[PdF MU]{Pedagogická fakulta, Masarykova univerzita}
-%</ped>
-%<*phil>
-\institute[FF MU]{Filozofická fakulta Masarykovej univerzity}
-%</phil>
-%<*press>
-\institute[Munipress]{Vydavateľstvo Masarykovej univerzity}
-%</press>
-%<*ptceitec>
-\institute[CEITEC MU]{Centrálna riadiaca štruktúra projektu CEITEC, Masarykova univerzita}
-%</ptceitec>
-%<*rect>
-\institute[Rektorát MU]{Rektorát Masarykovej univerzity}
-%</rect>
-%<*sci>
-\institute[PřF MU]{Prírodovedecká fakulta Masarykovej univerzity}
-%</sci>
-%<*skm>
-\institute[SKM MU]{Správa kolejí a menz Masarykovej univerzity}
-%</skm>
-%<*teiresias>
-\institute[Stredisko Teiresiás MU]{Stredisko pre pomoc študentov so špecifickými požadavkami MU}
-%</teiresias>
-%<*ucb>
-\institute[Správa univerzitného kampusu Bohunice MU]{Správa univerzitného kampusu Bohunice, Masarykova univerzita}
-%</ucb>
-%<*uct>
-\institute[Univerzitné centrum Telč MU]{Univerzitné centrum Telč, Masarykova univerzita}
-%</uct>
+%<arch>\institute[Archív MU]{Archív Masarykovej univerzity}
+%<ceitec>\institute[CEITEC MU]{Stredoeurópsky technologický inštitút, Masarykova univerzita}
+%<cerit>\institute[CERIT-SC MU]{CERIT Scientific Cloud, Masarykova univerzita}
+%<ctt>\institute[CTT MU]{Centrum pre transfer technológií Masarykovej univerzity}
+%<czs>\institute[CZS MU]{Centrum zahraničnej spolupráce Masarykovej univerzity}
+%<econ>\institute[ESF MU]{Ekonomicko-správna fakulta Masarykovej univerzity}
+%<fi>\institute[FI MU]{Fakulta informatiky Masarykovej univerzity}
+%<fsps>\institute[FSpS MU]{Fakulta športových štúdií Masarykovej univerzity}
+%<fss>\institute[FSS MU]{Fakulta sociálnych štúdií Masarykovej univerzity}
+%<iba>\institute[IBA MU]{Ústav biostatistiky a analýz Masarykovej univerzity}
+%<ics>\institute[ÚVT MU]{Ústav výpočtovej techniky Masarykovy univerzity}
+%<is>\institute[IS MU]{Informačný systém Masarykovej univerzity}
+%<kariera>\institute[Kariérne centrum MU]{Kariérne centrum Masarykovej univerzity}
+%<lang>\institute[CJV MU]{Centrum jazykového vzdelávania Masarykovej univerzity}
+%<law>\institute[PrF MU]{Právnická fakulta Masarykovej univerzity}
+%<med>\institute[LF MU]{Lekárska fakulta Masarykovej univerzity}
+%<mu>\institute[MU]{Masarykova univerzita}
+%<muzeu>\ Inštitút [Mendelovo múzeum MU]{Mendelovo múzeum Masarykovej univerzity}
+%<ped>\institute[PdF MU]{Pedagogická fakulta, Masarykova univerzita}
+%<phil>\institute[FF MU]{Filozofická fakulta Masarykovej univerzity}
+%<press>\institute[Munipress]{Vydavateľstvo Masarykovej univerzity}
+%<ptceitec>\institute[CEITEC MU]{Centrálna riadiaca štruktúra projektu CEITEC, Masarykova univerzita}
+%<rect>\institute[Rektor MU]{Rektor Masarykovej univerzity}
+%<rect-office>\institute[Rektorát MU]{Rektorát Masarykovej univerzity}
+%<sci>\institute[PřF MU]{Prírodovedecká fakulta Masarykovej univerzity}
+%<skm>\institute[SKM MU]{Správa kolejí a menz Masarykovej univerzity}
+%<teiresias>\institute[Stredisko Teiresiás MU]{Stredisko pre pomoc študentov so špecifickými požadavkami MU}
+%<ucb>\institute[Správa univerzitného kampusu Bohunice MU]{Správa univerzitného kampusu Bohunice, Masarykova univerzita}
+%<uct>\institute[Univerzitné centrum Telč MU]{Univerzitné centrum Telč, Masarykova univerzita}
 \date{\today}
 \subject{Predmet prezentace}
 \keywords{kľúčové, slová, prezentácie}
@@ -324,90 +135,35 @@
 \title[Short Presentation Title]{Full Presentation Title}
 \subtitle[Short Presentation Subtitle]{Full Presentation Subtitle}
 \author[J.\,Doe]{Jane Doe \\ personal-id@mail.muni.cz}
-%<*arch>
-\institute[MU Archives]{Masaryk University Archives}
-%</arch>
-%<*ceitec>
-\institute[CEITEC MU]{Central European Institute of Technology, Masaryk University}
-%</ceitec>
-%<*cerit>
-\institute[CERIT-SC MU]{CERIT Scientific Cloud, Masaryk University}
-%</cerit>
-%<*ctt>
-\institute[CTT MU]{Technology Transfer Office, Masaryk University}
-%</ctt>
-%<*czs>
-\institute[CZS MU]{Centre for International Cooperation, Masaryk University}
-%</czs>
-%<*econ>
-\institute[ESF MU]{Faculty of Economics and Administration, Masaryk University}
-%</econ>
-%<*fi>
-\institute[FI MU]{Faculty of Informatics, Masaryk University}
-%</fi>
-%<*fsps>
-\institute[FSpS MU]{Faculty of Sports Studies, Masaryk University}
-%</fsps>
-%<*fss>
-\institute[FSS MU]{Faculty of Social Studies, Masaryk University}
-%</fss>
-%<*iba>
-\institute[IBA MU]{Institute for Biostatistics and Analyses, Masaryk University}
-%</iba>
-%<*ics>
-\institute[ICS MU]{Institute of Computer Science, Masaryk University}
-%</ics>
-%<*is>
-\institute[IS MU]{Information System of Masaryk University}
-%</is>
-%<*kariera>
-\institute[Career Centre MU]{Career Centre, Masaryk University}
-%</kariera>
-%<*lang>
-\institute[CJV MU]{Language Centre, Masaryk University}
-%</lang>
-%<*law>
-\institute[PrF MU]{Faculty of Law, Masaryk University}
-%</law>
-%<*med>
-\institute[LF MU]{Faculty of Medicine, Masaryk University}
-%</med>
-%<*mu>
-\institute[MU]{Masaryk University}
-%</mu>
-%<*muzeu>
-\institute[Mendel Museum MU]{Mendel Museum, Masaryk University}
-%</muzeu>
-%<*ped>
-\institute[PdF MU]{Faculty of Education, Masaryk University}
-%</ped>
-%<*phil>
-\institute[FF MU]{Faculty of Arts, Masaryk University}
-%</phil>
-%<*press>
-\institute[Munipress]{Masaryk University Press}
-%</press>
-%<*ptceitec>
-\institute[CEITEC MU]{Central Management Structure of the CEITEC Project, Masaryk University}
-%</ptceitec>
-%<*rect>
-\institute[Rector's Office MU]{Rector's Office, Masaryk University}
-%</rect>
-%<*sci>
-\institute[Sci MU]{Faculty of Science, Masaryk University}
-%</sci>
-%<*skm>
-\institute[SKM MU]{Accomodation and Catering Services, Masaryk University}
-%</skm>
-%<*teiresias>
-\institute[Teiresiás MU]{Support Centre for Students with Special Needs, Masaryk University}
-%</teiresias>
-%<*ucb>
-\institute[Management of the University Campus at Bohunice MU]{Management of the University Campus at Bohunice, Masaryk University}
-%</ucb>
-%<*uct>
-\institute[University Center Telč MU]{University Center Telč, Masaryk University}
-%</uct>
+%<arch>\institute[MU Archives]{Masaryk University Archives}
+%<ceitec>\institute[CEITEC MU]{Central European Institute of Technology, Masaryk University}
+%<cerit>\institute[CERIT-SC MU]{CERIT Scientific Cloud, Masaryk University}
+%<ctt>\institute[CTT MU]{Technology Transfer Office, Masaryk University}
+%<czs>\institute[CZS MU]{Centre for International Cooperation, Masaryk University}
+%<econ>\institute[ESF MU]{Faculty of Economics and Administration, Masaryk University}
+%<fi>\institute[FI MU]{Faculty of Informatics, Masaryk University}
+%<fsps>\institute[FSpS MU]{Faculty of Sports Studies, Masaryk University}
+%<fss>\institute[FSS MU]{Faculty of Social Studies, Masaryk University}
+%<iba>\institute[IBA MU]{Institute for Biostatistics and Analyses, Masaryk University}
+%<ics>\institute[ICS MU]{Institute of Computer Science, Masaryk University}
+%<is>\institute[IS MU]{Information System of Masaryk University}
+%<kariera>\institute[Career Centre MU]{Career Centre, Masaryk University}
+%<lang>\institute[CJV MU]{Language Centre, Masaryk University}
+%<law>\institute[PrF MU]{Faculty of Law, Masaryk University}
+%<med>\institute[LF MU]{Faculty of Medicine, Masaryk University}
+%<mu>\institute[MU]{Masaryk University}
+%<muzeu>\institute[Mendel Museum MU]{Mendel Museum, Masaryk University}
+%<ped>\institute[PdF MU]{Faculty of Education, Masaryk University}
+%<phil>\institute[FF MU]{Faculty of Arts, Masaryk University}
+%<press>\institute[Munipress]{Masaryk University Press}
+%<ptceitec>\institute[CEITEC MU]{Central Management Structure of the CEITEC Project, Masaryk University}
+%<rect>\institute[Rector of MU]{Rector of the Masaryk University}
+%<rect-office>\institute[Rector's Office MU]{Rector's Office, Masaryk University}
+%<sci>\institute[Sci MU]{Faculty of Science, Masaryk University}
+%<skm>\institute[SKM MU]{Accomodation and Catering Services, Masaryk University}
+%<teiresias>\institute[Teiresiás MU]{Support Centre for Students with Special Needs, Masaryk University}
+%<ucb>\institute[Management of the University Campus at Bohunice MU]{Management of the University Campus at Bohunice, Masaryk University}
+%<uct>\institute[University Center Telč MU]{University Center Telč, Masaryk University}
 \date{\today}
 \subject{Presentation Subject}
 \keywords{the, presentation, keywords}
@@ -415,18 +171,6 @@
 
 \begin{frame}[plain]
 \maketitle
-\end{frame}
-
-%<*czech>
-\begin{frame}{Obsah prezentace}
-%</czech>
-%<*slovak>
-\begin{frame}{Obsah prezentácie}
-%</slovak>
-%<*english>
-\begin{frame}{Table of Contents}
-%</english>
-\tableofcontents
 \end{frame}
 
 %<*czech>
@@ -442,12 +186,8 @@
 \subsection[Short Subsection 1 Name]{Full Subsection 1 Name}
 %</english>
 
-%<*czech,slovak>
-\begin{frame}{Nadpis}{Podnadpis}
-%</czech,slovak>
-%<*english>
-\begin{frame}{Frame Title}{Frame Subtitle}
-%</english>
+%<czech,slovak>\begin{frame}{Nadpis}{Podnadpis}
+%<english>\begin{frame}{Frame Title}{Frame Subtitle}
 %<*czech>
 běžný text, \structure{struktura stránky}, \alert{zvýrazněný text}
 \begin{itemize}
@@ -459,7 +199,7 @@ běžný text, \structure{struktura stránky}, \alert{zvýrazněný text}
     \begin{itemize}
       \item odrážka třetí úrovně
     \end{itemize}
-    \alert{\item zvýrazněná odrážka druhé úrovně}
+    \item \alert{zvýrazněná odrážka druhé úrovně}
   \end{itemize}
 \end{itemize}
 \begin{enumerate}
@@ -478,7 +218,7 @@ obyčajný text, \structure{štruktúra stránky}, \alert{zvýraznený text}
     \begin{itemize}
       \item odrážka tretej úrovne
     \end{itemize}
-    \alert{\item zvýraznená odrážka druhej úrovne}
+    \item \alert{zvýraznená odrážka druhej úrovne}
   \end{itemize}
 \end{itemize}
 \begin{enumerate}
@@ -497,7 +237,7 @@ plain text, \structure{page structure}, \alert{emphasis}
     \begin{itemize}
       \item a third-level list item
     \end{itemize}
-    \alert{\item an emphasized second-level list item}
+    \item \alert{an emphasized second-level list item}
   \end{itemize}
 \end{itemize}
 \begin{enumerate}
@@ -510,69 +250,52 @@ plain text, \structure{page structure}, \alert{emphasis}
 \end{enumerate}
 \end{frame}
 
-%<*czech>
-\subsection[Název podsekce 2]{Dlouhý název podsekce 2}
-%</czech>
-%<*slovak>
-\subsection[Názov podsekcie 2]{Dlhý názov podsekcie 2}
-%</slovak>
-%<*english>
-\subsection[Short Subsection 2 Name]{Full Subsection 2 Name}
-%</english>
+%<czech>\subsection[Název podsekce 2]{Dlouhý název podsekce 2}
+%<slovak>\subsection[Názov podsekcie 2]{Dlhý názov podsekcie 2}
+%<english>\subsection[Short Subsection 2 Name]{Full Subsection 2 Name}
 
-%<*czech,slovak>
-\begin{frame}{Textové bloky}
-%</czech,slovak>
-%<*english>
-\begin{frame}{Text Blocks}
-%</english>
+%<czech,slovak>\begin{frame}{Textové bloky}
+%<english>\begin{frame}{Text Blocks}
 %<*czech>
-text nad blokem
+text nad blokem\footnote{text poznámky s \url{https://adresou.cz}}
 \begin{block}{Blok}
-  text
+  text v bloku
 \end{block}
 \begin{exampleblock}{Blok s příkladem}
-  text
+  text v bloku
 \end{exampleblock}
 \begin{alertblock}{Zvýrazněný blok}
-  text
+  text v bloku
 \end{alertblock}
-text pod blokem\footnote{text poznámky s \url{http://adresou.cz}}
 %</czech>
 %<*slovak>
-text nad blokom
+text nad blokom\footnote{text poznámky s \url{https://adresou.sk}}
 \begin{block}{Blok}
-  text
+  text v bloku
 \end{block}
 \begin{exampleblock}{Blok s príkladom}
-  text
+  text v bloku
 \end{exampleblock}
 \begin{alertblock}{Zvýraznený blok}
-  text
+  text v bloku
 \end{alertblock}
-text pod blokom\footnote{text poznámky s \url{http://adresou.sk}}
 %</slovak>
 %<*english>
-text above a block
+text above a block\footnote{a footnote with an \url{https://address.edu}}
 \begin{block}{Block}
-  text
+  text in a block
 \end{block}
 \begin{exampleblock}{Example Block}
-  text
+  text in a block
 \end{exampleblock}
 \begin{alertblock}{Emphasized Block}
-  text
+  text in a block
 \end{alertblock}
-text below a block\footnote{a footnote with an \url{http://address.edu}}
 %</english>
 \end{frame}
 
-%<*czech,slovak>
-\begin{frame}{Obrázky}
-%</czech,slovak>
-%<*english>
-\begin{frame}{Figures}
-%</english>
+%<czech,slovak>\begin{frame}{Obrázky}
+%<english>\begin{frame}{Figures}
 \begin{figure}
   \includegraphics[width=.5\textwidth,height=.5\textheight,keepaspectratio]{cow-black.mps}
 %<*czech>
@@ -587,92 +310,46 @@ text below a block\footnote{a footnote with an \url{http://address.edu}}
 \end{figure}
 \end{frame}
 
-%<*czech>
-\subsection[Název podsekce 3]{Dlouhý název podsekce 3}
-%</czech>
-%<*slovak>
-\subsection[Názov podsekcie 3]{Dlhý názov podsekcie 3}
-%</slovak>
-%<*english>
-\subsection[Short Subsection 3 Name]{Full Subsection 3 Name}
-%</english>
+%<czech>\subsection[Název podsekce 3]{Dlouhý název podsekce 3}
+%<slovak>\subsection[Názov podsekcie 3]{Dlhý názov podsekcie 3}
+%<english>\subsection[Short Subsection 3 Name]{Full Subsection 3 Name}
 
-%<*czech>
-\begin{frame}{Tabulky}
-%</czech>
-%<*slovak>
-\begin{frame}{Tabuľky}
-%</slovak>
-%<*english>
-\begin{frame}{Tables}
-%</english>
+%<czech>\begin{frame}{Tabulky}
+%<slovak>\begin{frame}{Tabuľky}
+%<english>\begin{frame}{Tables}
 \begin{table}
   \begin{tabular}{llc}
-%<*czech>
-    Jméno & Příjmení & Rok narození \\ \midrule
-%</czech>
-%<*slovak>
-    Meno & Priezvisko & Rok narodenia \\ \midrule
-%</slovak>
-%<*english>
-    First Name & Surname & Year of Birth \\ \midrule
-%</english>
+%<czech>    Jméno & Příjmení & Rok narození \\ \midrule
+%<slovak>    Meno & Priezvisko & Rok narodenia \\ \midrule
+%<english>    First Name & Surname & Year of Birth \\ \midrule
     Albert & Einstein & 1879 \\
     Marie & Curie & 1867 \\
     Thomas & Edison & 1847 \\
   \end{tabular}
-%<*czech>
-  \caption{Velcí vědci 19. století}
-%</czech>
-%<*slovak>
-  \caption{Veľkí vedci z 19. storočia}
-%</slovak>
-%<*english>
-  \caption{The great minds of the 19th century}
-%</english>
+%<czech>  \caption{Velcí vědci 19. století}
+%<slovak>  \caption{Veľkí vedci z 19. storočia}
+%<english>  \caption{The great minds of the 19th century}
 \end{table}
 \end{frame}
 
-\makeatletter
-%<*czech>
-\begin{frame}{Automatické optické škálování písma}
-%</czech>
-%<*slovak>
-\begin{frame}{Automatické optické škálovanie písma}
-%</slovak>
-%<*english>
-\begin{frame}{Automatic Optical Scaling}
-%</english>
-\begin{center}
-\begin{tabular}{ll}
-\Huge \f@family & \Huge \structure{\f@size pt} \\
-\huge \f@family & \huge \structure{\f@size pt}  \\
-\LARGE \f@family & \LARGE \structure{\f@size pt}  \\
-\Large \f@family & \Large \structure{\f@size pt}  \\
-\large \f@family & \large \structure{\f@size pt}  \\
-\normalsize \f@family & \normalsize \structure{\f@size pt}  \\[-0.95pt]
-\small \f@family & \small \structure{\f@size pt}  \\[-1.95pt]
-\footnotesize \f@family & \footnotesize \structure{\f@size pt} \\[-2.95pt]
-\scriptsize \f@family & \scriptsize \structure{\f@size pt}  \\[-4.95pt]
-\tiny \f@family & \tiny \structure{\f@size pt} 
-\end{tabular}
-\end{center}
-\end{frame}
-\makeatother
-
 \begin{frame}[plain]
 \vfill
-%<*czech>
-\centerline{Děkuji Vám za pozornost!}
-%</czech>
-%<*slovak>
-\centerline{Ďakujem vám za pozornosť!}
-%</slovak>
-%<*english>
-\centerline{Thank you for your attention!}
-%</english>
+%<czech>\centerline{Děkuji Vám za pozornost!}
+%<slovak>\centerline{Ďakujem vám za pozornosť!}
+%<english>\centerline{Thank you for your attention!}
 \vfill\vfill
 \end{frame}
+
+\begingroup
+\setbeamercolor{background canvas}{bg=mubeamer@base}
+\begin{frame}[plain]
+\vfill
+\centering
+%<czech,slovak>\includegraphics[width=\textwidth]{institution}
+%<english>\includegraphics[width=\textwidth]{institution-english}
+\vfill
+\end{frame}
+\endgroup
 
 \end{document}
 %    \end{macrocode}
