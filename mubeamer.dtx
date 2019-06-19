@@ -115,7 +115,7 @@
 %
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeMU}[2019/01/09]
+\ProvidesPackage{beamerthemeMU}[2019/06/19]
 \mode<presentation>
 %    \end{macrocode}
 %
@@ -149,7 +149,7 @@
 % \subsection{Defining the Options}
 % \begin{macro}{\mubeamer@option@locale}
 % The |locale|=\meta{language name} specifies the language that will determine
-% which labels and logos are displayed. \emph{When the |locale| option is
+% which logos and labels are displayed. \emph{When the |locale| option is
 % unspecified, the main language of the \textsf{babel} and \textsf{polyglossia}
 % packages is used. If neither package is available, |locale=english| is used.}
 %    \begin{macrocode}
@@ -160,8 +160,8 @@
 % \end{macro}
 %
 % \begin{macro}{\mubeamer@option@workplace}
-% The |workplace|=\meta{work place} specifies the work place whose the labels
-% and logos that will be displayed.  The \meta{work place}s recognized at the
+% The |workplace|=\meta{work place} specifies the work place whose logos
+% and labels that will be displayed.  The \meta{work place}s recognized at the
 % Masaryk University in Brno are outlined in table \ref{table:workplaces}.
 % \emph{When the |workplace| option is unspecified, |workplace=mu| is used.}
 %    \begin{macrocode}
@@ -260,7 +260,7 @@
 % \end{macro}^^A{\ifmubeamer@option@scaling}
 %
 % \begin{macro}{\ifmubeamer@option@gray}
-% The |gray| option makes all labels and logos gray, whereas the |color| option
+% The |gray| option makes all logos and labels gray, whereas the |color| option
 % makes them colored. \emph{The |color| option is the default when neither
 % option is specified.}
 %    \begin{macrocode}
@@ -392,36 +392,81 @@
 % \end{macro}^^A{\mubeamer@scaling@family@basic}
 % \end{macro}^^A{\ifmubeamer@scaling@enabled}
 %
+% \begin{macro}{\mubeamer@option@locale@logo}
 % \begin{macro}{\mubeamer@option@locale@label}
 % |\mubeamer@option@locale@{logo,label}| specify separately the locale for
 % logos and for labels. Both commands inherit the value of
 % |\mubeamer@option@locale|.
 %    \begin{macrocode}
+\def\mubeamer@option@locale@logo {\mubeamer@option@locale}
 \def\mubeamer@option@locale@label{\mubeamer@option@locale}
 %    \end{macrocode}
-% \end{macro}
+% \end{macro}^^A{mubeamer@option@locale@label}
+% \end{macro}^^A{mubeamer@option@locale@logo}
 %
 % \section{Filenames and Pathnames}\label{sec:filenames_and_pathnames}
 % \begin{macro}{\mubeamer@pathname@base}
 % |\mubeamer@pathname@base| is the pathname of the base directory
-% containing logo, label either directly or in subdirectories.
+% containing logos and labels, either directly or in subdirectories.
 %    \begin{macrocode}
 \def\mubeamer@pathname@base{mubeamer/}
 %    \end{macrocode}
 % \end{macro}
 %
-% \subsection{Labels}
+% \subsection{Logos and Labels}
+% \begin{macro}{\mubeamer@pathname@logo}
 % \begin{macro}{\mubeamer@pathname@label}
-% |\mubeamer@pathname@label| is the pathname of the base directory
-% directly containing label files.
+% |\mubeamer@pathname@{logo,label}| is the pathname of the base directory
+% directly containing logo and label files.
 %    \begin{macrocode}
+\def\mubeamer@pathname@logo {\mubeamer@pathname@base logo/}
 \def\mubeamer@pathname@label{\mubeamer@pathname@base label/}
+%    \end{macrocode}
+% \end{macro}^^A{mubeamer@pathname@label}
+% \end{macro}^^A{mubeamer@pathname@logo}
+%
+% \begin{macro}{\mubeamer@filename@logo}
+% |\mubeamer@filename@logo| is the filename of the logo that will be
+% displayed at the top of the title page.
+%    \begin{macrocode}
+\def\mubeamer@filename@logo{%
+  \mubeamer@pathname@logo mubeamer-\mubeamer@option@workplace-%
+    \mubeamer@option@locale@logo
+    \ifmubeamer@option@gray\else
+      -color%
+    \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mubeamer@filename@logo@fallback}
+% |\mubeamer@filename@logo@fallback| is the filename of the logo that will be
+% displayed at the top of the title page if |\mubeamer@filename@logo| is
+% not found.
+%    \begin{macrocode}
+\def\mubeamer@filename@logo@fallback{%
+  \mubeamer@pathname@logo mubeamer-\mubeamer@option@workplace-english%
+    \ifmubeamer@option@gray\else
+      -color%
+    \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\mubeamer@filename@logo@lastresort}
+% |\mubeamer@filename@logo@lastresort| is the filename of the logo that will be
+% displayed at the top of the title page if both |\mubeamer@filename@logo| and
+% |\mubeamer@filename@logo@fallback| are not found.
+%    \begin{macrocode}
+\def\mubeamer@filename@logo@lastresort{%
+  \mubeamer@pathname@logo mubeamer-mu-english%
+    \ifmubeamer@option@gray\else
+      -color%
+    \fi}
 %    \end{macrocode}
 % \end{macro}
 %
 % \begin{macro}{\mubeamer@filename@label}
 % |\mubeamer@filename@label| is the filename of the label that will be
-% displayed at the top of the title page.
+% displayed on the last page.
 %    \begin{macrocode}
 \def\mubeamer@filename@label{%
   \mubeamer@pathname@label mubeamer-\mubeamer@option@workplace-%
@@ -434,8 +479,7 @@
 %
 % \begin{macro}{\mubeamer@filename@label@fallback}
 % |\mubeamer@filename@label@fallback| is the filename of the label that will be
-% displayed at the top of the title page if |\mubeamer@filename@label| is
-% not found.
+% displayed on the last page.
 %    \begin{macrocode}
 \def\mubeamer@filename@label@fallback{%
   \mubeamer@pathname@label mubeamer-\mubeamer@option@workplace-english%
@@ -447,11 +491,12 @@
 %
 % \begin{macro}{\mubeamer@filename@label@lastresort}
 % |\mubeamer@filename@label@lastresort| is the filename of the label that will be
-% displayed at the top of the title page if both |\mubeamer@filename@label| and
+% displayed on the last page if both |\mubeamer@filename@label| and
 % |\mubeamer@filename@label@fallback| are not found.
 %    \begin{macrocode}
 \def\mubeamer@filename@label@lastresort{%
-  \mubeamer@pathname@label mubeamer-mu-english%
+  \mubeamer@pathname@label mubeamer-mu-%
+    \mubeamer@option@locale@label
     \ifmubeamer@option@gray\else
       -color%
     \fi}
@@ -514,7 +559,7 @@
 % \end{macro}
 %
 % \begin{macro}{\mubeamer@filename@patch}
-% |\mubeamer@filename@label| is the filename of the patch file that will be
+% |\mubeamer@filename@patch| is the filename of the patch file that will be
 % applied at the end of this style file.
 %    \begin{macrocode}
 \def\mubeamer@filename@patch{%
@@ -550,12 +595,12 @@
 %    \end{macrocode}
 % \end{macro}
 % \subsubsection{Label and Logo Size}
-% \begin{macro}{\mubeamer@length@labelheight}
-% |\mubeamer@length@labelheight| specifies the height of the label displayed at
+% \begin{macro}{\mubeamer@length@logoheight}
+% |\mubeamer@length@logoheight| specifies the height of the logo displayed at
 % the top of the title page.
 %    \begin{macrocode}
-\newlength\mubeamer@length@labelheight
-\mubeamer@length@labelheight=1.4cm
+\newlength\mubeamer@length@logoheight
+\mubeamer@length@logoheight=1.4cm
 %    \end{macrocode}
 % \end{macro}
 %
@@ -593,6 +638,15 @@
 \definecolor{mubeamer@fss}{RGB}{0,122,83}
 \definecolor{mubeamer@fsps}{RGB}{90,200,175}
 %    \end{macrocode}
+% \subsubsection{Label Background Color}
+% The background color of the label that will be displayed on the last page.
+%    \begin{macrocode}
+\ifmubeamer@option@gray
+  \definecolor{mubeamer@label}{RGB}{255,255,255}
+\else
+  \colorlet   {mubeamer@label}{mubeamer@base}
+\fi
+%    \end{macrocode}
 %
 % \subsection{Beamer Settings}
 % \subsubsection{Themes}
@@ -608,7 +662,6 @@
   text margin right=\mubeamer@length@margin}
 %    \end{macrocode}
 % \subsubsection{Templates}
-% The frame title and subtitle are displayed underneath the label.
 %    \begin{macrocode}
 \setbeamertemplate{frametitle}{%
   \vtop{{%
@@ -651,10 +704,10 @@
 \setbeamertemplate{title page}{%
   \vskip\mubeamer@length@margin
   \mubeamer@subroutine@includegraphics%
-    [height=\mubeamer@length@labelheight]%
-    {\mubeamer@filename@label}%
-    {\mubeamer@filename@label@fallback}%
-    {\mubeamer@filename@label@lastresort}%
+    [height=\mubeamer@length@logoheight]%
+    {\mubeamer@filename@logo}%
+    {\mubeamer@filename@logo@fallback}%
+    {\mubeamer@filename@logo@lastresort}%
   \vskip0pt plus 6filll
   {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}%
   \vskip0pt plus 1filll
@@ -680,10 +733,28 @@
 %    \begin{macrocode}
 \setbeamertemplate{itemize items}[square]
 %    \end{macrocode}
-% Blocks are round and cast a shadow.
+% Blocks are round, and cast a shadow.
 %    \begin{macrocode}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 %    \end{macrocode}
+% The label will be displayed on the last page.
+%    \begin{macrocode}
+\AtEndDocument{%
+  \begingroup
+  \setbeamercolor{background canvas}{bg=mubeamer@label}
+  \begin{frame}[plain]
+  \vfill
+  \centering
+  \mubeamer@subroutine@includegraphics%
+    [width=\textwidth]%
+    {\mubeamer@filename@label}%
+    {\mubeamer@filename@label@fallback}%
+    {\mubeamer@filename@label@lastresort}%
+  \vfill
+  \end{frame}
+  \endgroup}
+%    \end{macrocode}
+% 
 % \subsubsection{Fonts and Colors}
 %    \begin{macrocode}
 \setbeamerfont{structure}{series=\mdseries}

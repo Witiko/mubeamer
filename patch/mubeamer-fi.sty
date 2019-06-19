@@ -31,3 +31,9 @@
     \usebeamertemplate{alerted text end}%
   \endgroup
 }
+
+% Special definition for the Faculty of Informatics uses the faculty color as
+% the background color for the label that will be displayed on the last page.
+\ifmubeamer@option@gray\else
+  \colorlet{mubeamer@label}{mubeamer@\mubeamer@option@workplace}
+\fi

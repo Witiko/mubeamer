@@ -1,2 +1,4 @@
 example/*.tex
 mubeamer.pdf
+.*.swo
+.*.swp
