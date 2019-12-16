@@ -2,3 +2,12 @@ example/*.tex
 mubeamer.pdf
 .*.swo
 .*.swp
+example/*.fdb_latexmk
+example/*.aux
+example/*.fls
+example/*.log
+example/*.nav
+example/*.out
+example/*.snm
+example/*.toc
+example/*.pdf

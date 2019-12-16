@@ -21,6 +21,9 @@
 %<slovak>\setmainlanguage{slovak}
 %<english>\setmainlanguage{english}
 %</xetex>
+\usepackage{csquotes}
+\usepackage{biblatex}
+\addbibresource{example.bib}
 \usepackage{booktabs}
 \usetheme[
 %<arch>  workplace=arch,
@@ -206,6 +209,8 @@ běžný text, \structure{struktura stránky}, \alert{zvýrazněný text}
   \item a číslovaná odrážka
   \begin{enumerate}
     \item odrážka druhé úrovně se vzorečkem
+      \[ E = mc^2 \]
+      a s odkazem na bibliografickou citaci \cite{einstein1905tragheit}
 %</czech>
 %<*slovak>
 obyčajný text, \structure{štruktúra stránky}, \alert{zvýraznený text}
@@ -225,6 +230,8 @@ obyčajný text, \structure{štruktúra stránky}, \alert{zvýraznený text}
   \item a číslovaná odrážka
   \begin{enumerate}
     \item odrážka druhej úrovne se vzorčkom
+      \[ E = mc^2 \]
+      a s odkazom na bibliografickú citáciu \cite{einstein1905tragheit}
 %</slovak>
 %<*english>
 plain text, \structure{page structure}, \alert{emphasis}
@@ -244,8 +251,9 @@ plain text, \structure{page structure}, \alert{emphasis}
   \item a numbered list item
   \begin{enumerate}
     \item a second-level list item containing a math expression
-%</english>
       \[ E = mc^2 \]
+      and a citation \cite{einstein1905tragheit}
+%</english>
   \end{enumerate}
 \end{enumerate}
 \end{frame}
@@ -299,13 +307,31 @@ text above a block\footnote{a footnote with an \url{https://address.edu}}
 \begin{figure}
   \includegraphics[width=.5\textwidth,height=.5\textheight,keepaspectratio]{cow-black.mps}
 %<*czech>
-  \caption{Kráva černostrakatého holštýnského skotu}
+  \caption{Kráva černostrakatého holštýnského skotu ve stoje%
+    \footnote{%
+      Kdy že si ta kráva znovu lehne?
+      Odpověď vás překvapí.
+      \cite{tolkamp10cows}
+    }%
+  }
 %</czech>
 %<*slovak>
-  \caption{Krava holštýnska}
+  \caption{Krava holštýnska v stoji%
+    \footnote{%
+      Kedy že si tá krava znova ľahne?
+      Odpoveď vás prekvapí.
+      \cite{tolkamp10cows}
+    }%
+  }
 %</slovak>
 %<*english>
-  \caption{A Holstein Friesian cow}
+  \caption{A standing Holstein Friesian cow%
+    \footnote{%
+      Will the cow ever lie down again?
+      We may never know.
+      \cite{tolkamp10cows}
+    }%
+  }
 %</english>
 \end{figure}
 \end{frame}
@@ -330,6 +356,11 @@ text above a block\footnote{a footnote with an \url{https://address.edu}}
 %<slovak>  \caption{Veľkí vedci z 19. storočia}
 %<english>  \caption{The great minds of the 19th century}
 \end{table}
+\end{frame}
+
+\section{\bibname}
+\begin{frame}[t, allowframebreaks]{\bibname}
+\printbibliography[heading=none]
 \end{frame}
 
 \begin{frame}[plain]
