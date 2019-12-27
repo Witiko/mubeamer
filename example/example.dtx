@@ -340,17 +340,32 @@ text above a block\footnote{a footnote with an \url{https://address.edu}}
 %<slovak>\subsection[Názov podsekcie 3]{Dlhý názov podsekcie 3}
 %<english>\subsection[Short Subsection 3 Name]{Full Subsection 3 Name}
 
+\def\age(#1-#2-#3){%
+  \the\numexpr(
+    \year - #1
+    \ifnum\month<#2\relax
+      - 1
+    \else
+      \ifnum\month=#2\relax
+        \ifnum\day<#3\relax
+          - 1
+        \fi
+      \fi
+    \fi
+  )%
+}
+
 %<czech>\begin{frame}{Tabulky}
 %<slovak>\begin{frame}{Tabuľky}
 %<english>\begin{frame}{Tables}
 \begin{table}
   \begin{tabular}{llc}
-%<czech>    Jméno & Příjmení & Rok narození \\ \midrule
-%<slovak>    Meno & Priezvisko & Rok narodenia \\ \midrule
-%<english>    First Name & Surname & Year of Birth \\ \midrule
-    Albert & Einstein & 1879 \\
-    Marie & Curie & 1867 \\
-    Thomas & Edison & 1847 \\
+%<czech>    Jméno & Příjmení & Věk \\ \midrule
+%<slovak>    Meno & Priezvisko & Vek \\ \midrule
+%<english>    First Name & Surname & Age \\ \midrule
+    Albert & Einstein & \age(1879-03-14) \\
+    Marie & Curie & \age(1867-11-07) \\
+    Thomas & Edison & \age(1847-02-11) \\
   \end{tabular}
 %<czech>  \caption{Velcí vědci 19. století}
 %<slovak>  \caption{Veľkí vedci z 19. storočia}
