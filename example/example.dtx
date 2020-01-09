@@ -343,11 +343,11 @@ text above a block\footnote{a footnote with an \url{https://address.edu}}
 \def\age(#1-#2-#3){%
   \the\numexpr(
     \year - #1
-    \ifnum\month<#2\relax
+    \ifnum\month<#2
       - 1
     \else
-      \ifnum\month=#2\relax
-        \ifnum\day<#3\relax
+      \ifnum\month=#2
+        \ifnum\day<#3
           - 1
         \fi
       \fi
