@@ -115,7 +115,7 @@
 %
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeMU}[2019/12/29]
+\ProvidesPackage{beamerthemeMU}[2020/03/19]
 \mode<presentation>
 %    \end{macrocode}
 %
@@ -737,9 +737,10 @@
 %    \begin{macrocode}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 %    \end{macrocode}
+% \begin{macro}{\mubeamer@lastpage}
 % The label will be displayed on the last page.
 %    \begin{macrocode}
-\AtEndDocument{%
+\def\mubeamer@lastpage{%
   \begingroup
   \setbeamercolor{background canvas}{bg=mubeamer@label}
   \begin{frame}[plain]
@@ -753,7 +754,9 @@
   \vfill
   \end{frame}
   \endgroup}
+\AtEndDocument{\mubeamer@lastpage}
 %    \end{macrocode}
+% \end{macro}
 % 
 % \subsubsection{Fonts and Colors}
 %    \begin{macrocode}
