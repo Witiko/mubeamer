@@ -1,0 +1,31 @@
+\ProvidesPackage{mubeamer/patch/mubeamer-c4e}[2020/03/20]
+\NeedsTeXFormat{LaTeX2e}
+
+\usepackage{tikz}
+
+% Publicity requirements of the OP VVV programme dictate that each public
+% presentation contains the logo of the Ministry of Education and the EU.
+% Therefore we use the custom last page for the presentation with pre-filled
+% logos.
+\makeatletter
+  \let\mubeamer@lastpage=\relax
+\makeatother
+
+\AtEndDocument{%
+  \begingroup
+  \setbeamercolor{background canvas}{bg=mubeamer@label}
+  \begin{frame}[plain]
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[xshift=1.75cm, yshift=-1.4cm] at (current page.north west) {
+        \includegraphics[height=1.4cm]{mubeamer/logo/mubeamer-c4e-white}
+      };
+      \node[xshift=-0.05cm, yshift=-1cm] at (current page.center) {
+        \includegraphics[height=1.4cm]{mubeamer/logo/mubeamer-c4e-opvvv-logo-\languagename}
+      };
+      \node[xshift=1.95cm, yshift=0.9cm] at (current page.south west) {
+        \includegraphics[height=0.45cm]{mubeamer/logo/mubeamer-c4e-link}
+      };
+    \end{tikzpicture}
+  \end{frame}
+  \endgroup
+}
