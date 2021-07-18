@@ -1,0 +1,35 @@
+image: texlive/texlive
+
+stages:
+  - build
+
+Typeset documentation:
+  stage: build
+  tags:
+    - shared-fi
+  before_script:
+    - xetex mubeamer.ins
+  script:
+    - latexmk mubeamer.dtx
+  artifacts:
+    paths:
+      - mubeamer.pdf
+    expire_in: 1 week
+
+Typeset example documents:
+  stage: build
+  tags:
+    - shared-fi
+  before_script:
+    - xetex mubeamer.ins
+    - mkdir -p ~/texmf/tex/latex/mubeamer/
+    - cp -r beamerthemeMU.sty logo/ label/ patch/ ~/texmf/tex/latex/mubeamer/
+    - cd example
+    - xetex example.ins
+  script:
+    - ls *.tex | grep -v '-xetex-luatex\.tex$' | xargs latexmk -pdflatex
+    - ls *.tex | grep    '-xetex-luatex\.tex$' | xargs latexmk -lualatex
+  artifacts:
+    paths:
+      - example/*.pdf
+    expire_in: 1 week
