@@ -27,8 +27,8 @@ Typeset example documents:
     - cd example
     - xetex example.ins
   script:
-    - ls *.tex | grep -v '-xetex-luatex\.tex$' | xargs latexmk -pdflatex -silent
-    - ls *.tex | grep    '-xetex-luatex\.tex$' | xargs latexmk -lualatex -silent
+    - ls *.tex | grep -v -- '-xetex-luatex\.tex$' | xargs latexmk -pdflatex -silent
+    - ls *.tex | grep    -- '-xetex-luatex\.tex$' | xargs latexmk -lualatex -silent
   artifacts:
     paths:
       - example/*.pdf
