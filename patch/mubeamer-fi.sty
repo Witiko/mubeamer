@@ -13,7 +13,7 @@
 % text.
 \setbeamerfont*{alerted text}{parent=normal text}
 \setbeamercolor*{alerted text}{parent=normal text,bg=mubeamer@\mubeamer@option@workplace}
-\RequirePackage{trimclip, longfbox}
+\RequirePackage{trimclip, longfbox}\newdimen\@tempdimd
 \renewcommand<>{\alert}[1]{%
   \begingroup
     \usebeamertemplate{alerted text begin}%
